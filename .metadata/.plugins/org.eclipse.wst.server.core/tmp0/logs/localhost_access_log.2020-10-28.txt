@@ -1,0 +1,2 @@
+127.0.0.1 - - [28/Oct/2020:15:37:34 -0400] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [28/Oct/2020:15:37:34 -0400] "GET /mie350webapp/WEB-INF/classes/db/CourtsideDB.accdb HTTP/1.1" 404 949

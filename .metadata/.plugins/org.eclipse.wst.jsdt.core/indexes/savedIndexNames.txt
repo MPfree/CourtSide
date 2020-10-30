@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+W:\MIE350\Courtside\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1658181319.index
+536651407.index
+1192600105.index
+621276422.index
+2766771498.index
+707581701.index
