@@ -35,14 +35,8 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Welcome</h1>
-				<p>In this project, your team will design and build a web
-					application. A web application is a software application that is
-					accessed over the Internet using standard browsers (e.g. Internet
-					Explorer, Mozilla Firefox). Examples of web application would be
-					online-shopping, web banking, stock exchange and many others. Each
-					member of the team is expected to contribute equally to the project
-					though there may be a variety of different roles.</p>
+				<h1>Hello World :)</h1>
+
 				<hr>
 				<h3>Internet Browsers</h3>
 				<p>When designing your projects, please make sure to test them
