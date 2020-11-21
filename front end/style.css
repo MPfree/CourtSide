@@ -1,12 +1,12 @@
  .page {
 	font-family: 'Raleway', sans-serif;
 	font-size: 20px;
-	color: #239C6D;
+	color: #b37120;
 	text-align: center;
 }
 
 .page:hover {
-	color: #72a8ad;
+	color: #b37120;
 }
 
 .page:link {
@@ -21,23 +21,38 @@ body {
 	text-align: left;
 	font-size: 25px;
 
-
 }
 
 .banner {
-	/*
-	background-color: #d6d6d6;
-	*/
+	background-color: #f5e4d0;
 	text-align: right;
+	font-weight: bold;
 }
 
  .text {
-
 	font-family: 'Raleway', sans-serif, thin;
-	height: 500px;
-	width: 800px;
-	color: #239C6D;
+	color: #b37120;
 	margin-left: auto;
 	margin-right: auto;
+	font-size: 35px;
+	text-align: center;
+	font-weight: bold;
 
+}
+
+.title {
+	text-align: center;
+	font-size: 45px;
+}
+
+.button{
+	text-align: center;
+	background-color: #f5e4d0;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: centre;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
 }
