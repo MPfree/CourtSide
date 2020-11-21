@@ -3,6 +3,8 @@
 	font-size: 20px;
 	color: #b37120;
 	text-align: center;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 .page:hover {
@@ -25,7 +27,7 @@ body {
 
 .banner {
 	background-color: #f5e4d0;
-	text-align: right;
+	text-align: center;
 	font-weight: bold;
 }
 
@@ -43,16 +45,30 @@ body {
 .title {
 	text-align: center;
 	font-size: 45px;
+	font-family: 'Raleway', sans-serif, thin;
+	color: #b37120;
+	font-weight: bold;
 }
 
 .button{
 	text-align: center;
 	background-color: #f5e4d0;
 	border: none;
-	color: white;
+	color: #b37120;
 	padding: 15px 32px;
 	text-align: centre;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+	font-weight: bold;
+}
+
+.wrapper{
+	text-align: center;
+}
+
+.checkinform{
+	text-align: center;
+	font-family: 'Raleway', sans-serif, thin;
+	color: #b37120;
 }
