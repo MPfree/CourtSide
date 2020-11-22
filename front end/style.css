@@ -83,6 +83,7 @@ body {
 
 .daytitle{
 	text-align: center;
+	width: 240px;
 	background-color: #b37120;
 	border: none;
 	padding: 15px 32px;
@@ -106,10 +107,11 @@ body {
 	color: white;
 }
 
-#div1{
+#day1{
 	overflow: scroll;
 	height: 600px;
 	width: 300px;
+	
 }
 
 #day2{
