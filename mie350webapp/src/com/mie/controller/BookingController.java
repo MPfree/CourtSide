@@ -1,29 +1,31 @@
 package com.mie.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mie.model.*;
+import com.mie.dao.*;
 
-public class PostController extends HTTPServlet {
-	
+//William Jereza :)
+public class BookingController extends HTTPServlet {
+
 	private static final long serialVersionUID = 1L;
 	private static String INSERT = "/addPost.jsp";
 	private static String GET = "/getPosts.jsp";
-
-	private Post post;
 	
-	public PostController() {
+	private Booking booking;
+	private BookingDao bookingDao;
+	
+	//constructor
+	public BookingController() {
 		super();
-		post = new Post();
+		bookingDao = new BookingDao();
 	}
 	
 	protected void doGet(HttpServletRequest request,
@@ -38,10 +40,10 @@ public class PostController extends HTTPServlet {
 		String action = request.getParameter("action");
 
 		if (action.equalsIgnoreCase("insert")) {
-			forward = INSERT; // insert will command to create a new post
+			forward = INSERT; // insert will command to create a new booking
 		} else if (action.equalsIgnoreCase("get")) {
-			forward = GET; // get will command to retrieve a desired post
-			request.setAttribute("posts", post.getCourtPosts(request.getAttribute("courtID")));
+			forward = GET; // get will command to retrieve a desired booking
+			request.setAttribute("bookings", bookingDao.allBookings(request.getAttribute("courtID"), new Date(request.getDateHeader("sign_up_date"))));
 		} else {
 			;
 		}
@@ -49,7 +51,7 @@ public class PostController extends HTTPServlet {
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -59,14 +61,13 @@ public class PostController extends HTTPServlet {
 		 */
 		// This code below should create a post object from the JSP info, only ever used by addPost.jsp
 		
-// Problem below: all request.getParam values return strings
-	Post newPost = new Post(Post.generatePostID(),request.getAttribute("playerID"), request.getAttribute("courtID"), request.getParameter("title"), 
-			request.getParameter("description"), request.getAttribute("postPic"),request.getAttribute("props"),request.getAttribute("rating"));
-
+		// Problem below: all request.getParam values return strings
+		Booking newBooking = new Booking(request.getAttribute("playerID"), request.getAttribute("courtID"), new Date(request.getDateHeader("sign_up_date")), 
+			new Date(request.getDateHeader("sign_up_time")), request.getAttribute("team_size"),request.getParameter("description"));
 		try {
-			newPost.makePost();
-			// create social.jsp
-			response.sendRedirect("social.jsp");
+			bookingDao.addBooking(newBooking);
+			// create booking.jsp
+			response.sendRedirect("booking.jsp");
 			
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -74,5 +75,5 @@ public class PostController extends HTTPServlet {
 
 
 	}
-
+	
 }
