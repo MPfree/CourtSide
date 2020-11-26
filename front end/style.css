@@ -125,3 +125,14 @@ body {
 	height: 600px;
 	width: 300px;
 }
+
+.post{
+	height:180px;
+	width: 300px;
+	background-color: #b37120;
+	text-align: center;
+}
+
+.title2{
+	background-color: #d19054;
+}
