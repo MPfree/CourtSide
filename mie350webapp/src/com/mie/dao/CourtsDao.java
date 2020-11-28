@@ -1,6 +1,7 @@
 package com.mie.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mie.model.Courts;
+import com.mie.util.DbUtil;
 
 public class CourtsDao {
 
@@ -71,7 +73,8 @@ public class CourtsDao {
 	
 	
 	public void updateCourtRating(int RCourtID, float UserRating) {
-
+		try {
+			
 		Statement statement = connection.createStatement();
 		
 		PreparedStatement preparedStatement = connection
@@ -87,18 +90,20 @@ public class CourtsDao {
 		ResultSet rs1 = preparedStatement.executeQuery();
 		
 		int Number_Ratings = rs1.getInt("Number_Ratings");
-	
+		PreparedStatement preparedStatement2 = connection
+				.prepareStatement("update Courts set Rating=?"+ " where CourtID=?");
+		Courts courts = new Courts();
 
-			PreparedStatement preparedStatement2 = connection
-					.prepareStatement("update Courts set Rating=?"+ " where CourtID=?");
+		preparedStatement2.setFloat(1,courts.updateRating(UserRating, CurrentRating,Number_Ratings));
+		preparedStatement2.setInt(2, RCourtID);
+		preparedStatement2.executeUpdate();
 
-			preparedStatement2.setFloat(1,(Courts.updateRating(UserRating, CurrentRating,Number_Ratings));
-			preparedStatement2.setInt(2, RCourtID);
-			preparedStatement2.executeUpdate();
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
 		
 	public List<Courts> getAllCourts() {
 		List<Courts> Courts = new ArrayList<Courts>();
