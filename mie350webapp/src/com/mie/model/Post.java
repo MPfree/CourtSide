@@ -153,13 +153,14 @@ public class Post {
 			ResultSet rs = st.executeQuery(getPostQuery);
 			
 			while(rs.next()) {
-				posts.put(rs.getInt(1), new Post(rs.getInt(1), courtID, rs.getInt(3), rs.getString(4),rs.getString(5),rs.getImage(6),rs.getInt(7),rs.getDouble(8)));
+				posts.put(rs.getInt(1), new Post(rs.getInt(1), courtID, rs.getInt(3), rs.getString(4),rs.getString(5),(image)rs.getObject(6),rs.getInt(7),rs.getDouble(8)));
 			}
 			
 			return posts;
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
+			return null;
 
 		}
 	}
