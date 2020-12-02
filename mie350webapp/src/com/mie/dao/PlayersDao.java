@@ -25,14 +25,16 @@ public class PlayersDao {
 	public void addPlayer(Players player) {
 		try {
 			PreparedStatement ps = connection
-					.prepareStatement("insert into players values (?,?,?,?,?,?,?)");
+					.prepareStatement("insert into PlayedID, Username, Password"
+							+ "Name, Position, Height, Profile_Picture)"
+							+ " values (?,?,?,?,?,?,?)");
 			ps.setInt(1, player.getPlayerID());
 			ps.setString(2, player.getUsername());
 			ps.setString(3, player.getPassword());
 			ps.setString(4, player.getName());
 			ps.setString(5, player.getPosition());
 			ps.setString(6, player.getHeight());
-			ps.setBytes(7, player.getProfilePic());
+			ps.setBytes(7, null);
 			
 			//finally execute request
 			ps.executeUpdate();
@@ -70,7 +72,6 @@ public class PlayersDao {
 			player.setName(rs.getString("name"));
 			player.setPosition(rs.getString("position"));
 			player.setHeight(rs.getString("height"));
-			player.setProfilepic(rs.getBytes("profile"));
 			
 			//finally add to list
 			players.add(player);

@@ -18,11 +18,7 @@ import com.mie.model.Post;
  */
 public class MapController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String ADDC = "/addCourt.jsp";
-	private static String UPDATE = "/updateRating.jsp";
-	private static String AllCourts = "/allCourts.jsp";
-	
-	///private CourtsDao Cdao;
+	private static String MAPS = "/mapspage.jsp";
 	private Courts court;
 	private CourtsDao dao;
        
@@ -40,8 +36,7 @@ public class MapController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String forward = AllCourts;
-		String action = request.getParameter("action");
+		String forward = MAPS;
 		request.setAttribute("Courts", dao.getAllCourts());
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -54,32 +49,28 @@ public class MapController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Courts court= new Courts();
-		court.setCourt_Name(request.getParameter("Court_Name"));
-		court.setAddress(request.getParameter("Address"));
-		court.setNumber_Nets(request.getParameter("Number_Nets"));
-		court.setDouble_Rim(request.getParameter("Double_Rim"));
-		court.setRating(request.getParameter("Rating"));
-		
-		String CourtID = request.getParameter("CourtID");
-		
-		if (CourtID == null || CourtID.isEmpty()) {
+		String courtName = request.getParameter("Court_Name");
+		if(courtName != null) {
+			Courts court= new Courts();
+			court.setCourtID(Integer.parseInt(request.getParameter("CourtID")));
+			court.setCourt_Name(request.getParameter("Court_Name"));
+			court.setAddress(request.getParameter("Address"));
+			court.setNumber_Nets(Integer.parseInt(request.getParameter("Number_Nets")));
+			court.setDouble_Rim(Integer.parseInt(request.getParameter("Double_Rim")));
+			court.setRating(Float.parseFloat(request.getParameter("Rating")));
 			dao.addCourt(court);
-		} else {
-			/**
-			 * Otherwise, if the field is already filled (this occurs when the
-			 * user is trying to Edit A Student), then the student's information
-			 * will be updated accordingly.
-			 */
-			court.setCourtID(Integer.parseInt(CourtID));
-			dao.updateCourtRating(court);
+		}
+		else {
+			int courtID = Integer.parseInt(request.getParameter("CourtID"));
+			float rating = Float.parseFloat(request.getParameter("rating"));
+			dao.updateCourtRating(courtID, rating);
 		}
 		/**
-		 * Once the student has been added or updated, the page will redirect to
-		 * the listing of students.
+		 * Once the court or rating has been added or updated, the page will redirect to
+		 * the listing of courts.
 		 */
 		RequestDispatcher view = request
-				.getRequestDispatcher(ADDC);
+				.getRequestDispatcher(MAPS);
 		request.setAttribute("Courts", dao.getAllCourts());
 		view.forward(request, response);
 	}
