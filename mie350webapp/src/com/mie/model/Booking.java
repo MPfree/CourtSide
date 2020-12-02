@@ -1,6 +1,7 @@
 package com.mie.model;
 
 import java.sql.Date;
+import java.sql.Time;
 
 //William Jereza :)
 public class Booking {
@@ -8,12 +9,12 @@ public class Booking {
 	private int playerID;
 	private int courtID;
 	private Date signupDate;
-	private Date signupTime;
+	private Time signupTime;
 	private int teamSize;
 	private String description;
 	
 	//constructor
-	public Booking(int playerID, int courtID, Date signupDate, Date signupTime, int teamSize, String description) {
+	public Booking(int playerID, int courtID, Date signupDate, Time signupTime, int teamSize, String description) {
 		this.playerID = playerID;
 		this.courtID = courtID;
 		this.signupDate = signupDate;
@@ -59,11 +60,11 @@ public class Booking {
 		this.signupDate = signupDate;
 	}
 	
-	public Date getsignupTime() {
+	public Time getsignupTime() {
 		return signupTime;
 	}
 
-	public void setsignupTime(Date signupTime) {
+	public void setsignupTime(Time signupTime) {
 		this.signupTime = signupTime;
 	}
 

@@ -12,5 +12,10 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ucanaccess-4.0.2.jar"/>
+	<classpathentry kind="lib" path="//SRVA/Homes$/kreynint/Documents/MIE350/CourtSide/commons-lang3-3.11-bin/commons-lang3-3.11/commons-lang3-3.11.jar"/>
+	<classpathentry kind="lib" path="//SRVA/Homes$/kreynint/Documents/MIE350/CourtSide/commons-lang3-3.11-bin/commons-lang3-3.11/commons-lang3-3.11-javadoc.jar"/>
+	<classpathentry kind="lib" path="//SRVA/Homes$/kreynint/Documents/MIE350/CourtSide/commons-lang3-3.11-bin/commons-lang3-3.11/commons-lang3-3.11-sources.jar"/>
+	<classpathentry kind="lib" path="//SRVA/Homes$/kreynint/Documents/MIE350/CourtSide/commons-lang3-3.11-bin/commons-lang3-3.11/commons-lang3-3.11-tests.jar"/>
+	<classpathentry kind="lib" path="//SRVA/Homes$/kreynint/Documents/MIE350/CourtSide/commons-lang3-3.11-bin/commons-lang3-3.11/commons-lang3-3.11-test-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

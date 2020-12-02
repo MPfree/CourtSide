@@ -9,18 +9,15 @@ public class Players {
 	private String password;
 	private String name;
 	private String position;
-	private String height;
-	private byte[] profilePic; //my judgement is to store image as this (probably wrong idk lool)
-		
+	private String height;		
 	//constructor
-	public Players (int playerID, String username, String password, String name, String position,String height, byte[] profilePic) {
+	public Players (int playerID, String username, String password, String name, String position,String height) {
 		this.playerID = playerID;
 		this.username = username;
 		this.username = password;
 		this.name = name;
 		this.position = position;
 		this.height = height;
-		this.profilePic = profilePic;
 	}
 	
 	//constructor #2 empty argument 
@@ -32,7 +29,6 @@ public class Players {
 		this.name = "";
 		this.position = "";
 		this.height = "";
-		this.profilePic = null;
 	}
 	
 	// GETTERS AND SETTERS
@@ -85,20 +81,13 @@ public class Players {
 		this.height = height;
 	}
 
-	public byte[] getProfilePic() {
-		return profilePic;
-	}
-
-	public void setProfilepic(byte[] profilePic) {
-		this.profilePic = profilePic;
-	}
 
 	//Override toString()
 	@Override
 	public String toString() {
 		return "Player [playerid=" + playerID + ", username=" + username
 				+ ", password=" + password + ", name=" + name + ", position="
-				+ position +  ", height=" + height + ", profilepic=" + profilePic + "]";
+				+ position +  ", height=" + height + "]";
 	}
 	
 }

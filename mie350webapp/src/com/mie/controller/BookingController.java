@@ -1,11 +1,16 @@
 package com.mie.controller;
 
 import java.io.IOException;
+import org.apache.commons.lang.time.DateUtils;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,11 +18,10 @@ import com.mie.model.*;
 import com.mie.dao.*;
 
 //William Jereza :)
-public class BookingController extends HTTPServlet {
+public class BookingController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static String INSERT = "/addPost.jsp";
-	private static String GET = "/getPosts.jsp";
+	private static String BOOKING = "bookings.jsp";
 	
 	private Booking booking;
 	private BookingDao bookingDao;
@@ -39,13 +43,9 @@ public class BookingController extends HTTPServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 
-		if (action.equalsIgnoreCase("insert")) {
-			forward = INSERT; // insert will command to create a new booking
-		} else if (action.equalsIgnoreCase("get")) {
-			forward = GET; // get will command to retrieve a desired booking
-			request.setAttribute("bookings", bookingDao.allBookings(request.getAttribute("courtID"), new Date(request.getDateHeader("sign_up_date"))));
-		} else {
-			;
+		if (action.equalsIgnoreCase("get")) {
+			forward = BOOKING; // get will command to retrieve a desired booking
+			request.setAttribute("bookings", bookingDao.allBookings(Integer.parseInt(request.getParameter("courtID")), new Date(request.getDateHeader("sign_up_date"))));
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -62,16 +62,24 @@ public class BookingController extends HTTPServlet {
 		// This code below should create a post object from the JSP info, only ever used by addPost.jsp
 		
 		// Problem below: all request.getParam values return strings
-		Booking newBooking = new Booking(request.getAttribute("playerID"), request.getAttribute("courtID"), new Date(request.getDateHeader("sign_up_date")), 
-			new Date(request.getDateHeader("sign_up_time")), request.getAttribute("team_size"),request.getParameter("description"));
-		try {
-			bookingDao.addBooking(newBooking);
-			// create booking.jsp
-			response.sendRedirect("booking.jsp");
+		int playerID = Integer.parseInt(request.getParameter("playerID"));
+		int courtID = Integer.parseInt(request.getParameter("courtID"));
+		Date signUpDate = new Date(request.getDateHeader("sign_up_date"));
+		Time signUpTime = new Time(Integer.parseInt(request.getParameter("sign_up_time")));
+		int teamSize = Integer.parseInt(request.getParameter("team_size"));
+		String description = request.getParameter("description");
+		Booking newBooking = new Booking(playerID, courtID, signUpDate, signUpTime, 
+				teamSize, description);
+		bookingDao.addBooking(newBooking);
+		HashMap<Date,List<Booking>> bookings = bookingDao.allBookings(courtID, signUpDate);
+		RequestDispatcher view = request
+				.getRequestDispatcher(BOOKING);
+
+		request.setAttribute("bookings", bookings);
+		view.forward(request, response);
+		
 			
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+
 
 
 	}
