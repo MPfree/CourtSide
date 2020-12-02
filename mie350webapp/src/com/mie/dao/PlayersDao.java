@@ -43,6 +43,22 @@ public class PlayersDao {
 			e.printStackTrace();
 		}
 	}
+
+	public int generatePlayerID() {
+		conn = DbUtil.getConnection();
+		try {
+
+			String generateIDQuery = "select count(PlayerID) from Players";
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(generateIDQuery);
+
+			return rs.getInt(1)+1;
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
 	//delete player
 	public void deletePlayer(Players player) {
@@ -82,6 +98,64 @@ public class PlayersDao {
 
 	return players;
 }
+
+	public static Players login(Players player) {
+
+		/**
+		 * This method attempts to find the member that is trying to log in by
+		 * first retrieving the username and password entered by the user.
+		 */
+		Statement stmt = null;
+
+		String username = player.getUsername();
+		String password = player.getPassword();
+
+		/**
+		 * Prepare a query that searches the members table in the database
+		 * with the given username and password.
+		 */
+		String searchQuery = "select * from members where username='"
+				+ username + "' AND password='" + password + "'";
+
+		try {
+			// connect to DB
+			currentCon = DbUtil.getConnection();
+			stmt = currentCon.createStatement();
+			rs = stmt.executeQuery(searchQuery);
+			boolean more = rs.next();
+
+			/**
+			 * If there are no results from the query, set the member to false.
+			 * The person attempting to log in will be redirected to the home
+			 * page when isValid is false.
+			 */
+
+			if (!more) {
+				player.setValid(false);
+			}
+
+			/**
+			 * If the query results in an database entry that matches the
+			 * username and password, assign the appropriate information to
+			 * the Member object.
+			 */
+			else if (more) {
+				String name = rs.getString("Name");
+				player.setFirstName(name);
+				member.setValid(true);
+			}
+		}
+
+		catch (Exception ex) {
+			System.out.println("Log In failed: An Exception has occurred! "
+					+ ex);
+		}
+		/**
+		 * Return the Member object.
+		 */
+		return player;
+
+	}
 
 //	public void updatePlayer (Player player) {
 //		try {
