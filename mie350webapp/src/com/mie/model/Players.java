@@ -9,7 +9,8 @@ public class Players {
 	private String password;
 	private String name;
 	private String position;
-	private String height;		
+	private String height;
+	private boolean valid; //for logging in
 	//constructor
 	public Players (int playerID, String username, String password, String name, String position,String height) {
 		this.playerID = playerID;
@@ -80,6 +81,10 @@ public class Players {
 	public void setHeight(String height) {
 		this.height = height;
 	}
+
+	public void setValid(boolean isValid) { this.valid = isValid;}
+
+	public void getValid() {return this.valid;}
 
 
 	//Override toString()
