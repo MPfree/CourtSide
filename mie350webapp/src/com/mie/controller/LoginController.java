@@ -24,7 +24,7 @@ public class LoginController extends HttpServlet {
 		/**
 		 * Retrieve the entered username and password from the login.jsp form.
 		 */
-		Player player = new Player();
+		Players player = new Players();
 		player.setUsername(request.getParameter("un"));
 		player.setPassword(request.getParameter("pw"));
 
@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionPlayer", player);
 				session.setAttribute("username", player.getUsername());
-				session.setAttribute("name", member.getName());
+				session.setAttribute("name", player.getName());
 				/**
 				 * Redirect to the members-only home page.
 				 */

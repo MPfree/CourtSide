@@ -45,7 +45,7 @@ public class PlayersDao {
 	}
 
 	public int generatePlayerID() {
-		conn = DbUtil.getConnection();
+		Connection conn = DbUtil.getConnection();
 		try {
 
 			String generateIDQuery = "select count(PlayerID) from Players";
@@ -119,9 +119,9 @@ public class PlayersDao {
 
 		try {
 			// connect to DB
-			currentCon = DbUtil.getConnection();
-			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			Connection connection = DbUtil.getConnection();
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(searchQuery);
 			boolean more = rs.next();
 
 			/**
@@ -141,8 +141,8 @@ public class PlayersDao {
 			 */
 			else if (more) {
 				String name = rs.getString("Name");
-				player.setFirstName(name);
-				member.setValid(true);
+				player.setName(name);
+				player.setValid(true);
 			}
 		}
 
