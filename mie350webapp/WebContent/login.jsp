@@ -25,38 +25,19 @@
 </head>
 <body>
 
-	<%@ include file="navbar.jsp"%>
+	<form action="LoginController">
 
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-left">
-				<h1>Administrator Login</h1>
+        Username: <input type="text" name="un" /><br> Password: <input
+            						type="password" name="pw" />
+            						 <br> Name: <input type="text" name="name">
+            						 <br> Position: <input type="text" name="position">
+            						 <br> Height: <input type="text" name="height">
+            						 <input type="submit" class="btn btn-info" value="Submit">
+    </form>
 
-				<form action="LoginController">
 
-					Username: <input type="text" name="un" /><br> Password: <input
-						type="password" name="pw" /> <input type="submit"
-						class="btn btn-info" value="Submit">
 
-				</form>
-				<br /> 
-				For demonstration purposes, please use the following
-				credentials:
-				<ul>
-					<li><b>Username</b>: admin (or admin2, admin3, admin4, admin5)</li>
-					<li><b>Password</b>: password</li>
-				</ul>
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
-		</div>
-	</div>
 
-	<%@ include file="footer.jsp"%>
 
 </body>
 </html>

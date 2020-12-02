@@ -24,31 +24,30 @@ public class LoginController extends HttpServlet {
 		/**
 		 * Retrieve the entered username and password from the login.jsp form.
 		 */
-		Member member = new Member();
-		member.setUsername(request.getParameter("un"));
-		member.setPassword(request.getParameter("pw"));
+		Player player = new Player();
+		player.setUsername(request.getParameter("un"));
+		player.setPassword(request.getParameter("pw"));
 
 		try {
 			/**
 			 * Try to see if the member can log in.
 			 */
-			member = MemberDao.login(member);
+			player = PlayersDao.login(player);
 
 			/**
 			 * If the isValid value is true, assign session attributes to the
 			 * current member.
 			 */
-			if (member.isValid()) {
+			if (player.isValid()) {
 
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionmember", member);
-				session.setAttribute("username", member.getUsername());
-				session.setAttribute("firstname", member.getFirstName());
-				session.setAttribute("lastname", member.getLastName());
+				session.setAttribute("currentSessionPlayer", player);
+				session.setAttribute("username", player.getUsername());
+				session.setAttribute("name", member.getName());
 				/**
 				 * Redirect to the members-only home page.
 				 */
-				response.sendRedirect("memberLogged.jsp");
+				response.sendRedirect("index.jsp");
 
 				/**
 				 * Set a timeout variable of 900 seconds (15 minutes) for this
@@ -62,7 +61,7 @@ public class LoginController extends HttpServlet {
 				 * Otherwise, redirect the user to the invalid login page and
 				 * ask them to log in again with the proper credentials.
 				 */
-				response.sendRedirect("invalidLogin.jsp");
+				response.sendRedirect("login.jsp");
 			}
 		}
 
