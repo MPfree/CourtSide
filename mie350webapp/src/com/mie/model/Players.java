@@ -84,7 +84,7 @@ public class Players {
 
 	public void setValid(boolean isValid) { this.valid = isValid;}
 
-	public void getValid() {return this.valid;}
+	public boolean isValid() {return this.valid;}
 
 
 	//Override toString()

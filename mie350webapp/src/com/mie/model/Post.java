@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.mie.dao.CommentDao;
 import com.mie.util.DbUtil;
 
 public class Post {
@@ -19,6 +20,7 @@ public class Post {
 	private int courtID;
 	private String title;
 	private String description;
+	private ArrayList<Comment> comments;
 	
 	public Connection getConn() {
 		return conn;
@@ -91,13 +93,21 @@ public class Post {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
+	
+	public ArrayList<Comment> getComments(){
+		return comments;
+	}
+	
+	public void setComments(ArrayList<Comment> comments) {
+		this.comments = comments;
+	}
 
 	private image postPic;
 	private int props;
 	private double rating;
 	
 	public Post(int postID, int playerID, int courtID, String title, 
-			String description, image postPic, int props, double rating) {
+			String description, image postPic, int props, double rating, ArrayList<Comment> comments) {
 		this.postID = postID;
 		this.playerID = playerID;
 		this.courtID = courtID;
@@ -106,7 +116,14 @@ public class Post {
 		this.postPic = postPic;
 		this.props = props;
 		this.rating = rating;
+		this.comments = comments;
 	}
+	
+	public Post(int postID, int playerID, int courtID, String title, 
+			String description, image postPic, int props, double rating) {
+		this(postID, playerID, courtID, title, description, postPic, props, rating, null);
+	}
+	
 	
 	public Post() {
 		
@@ -120,7 +137,7 @@ public class Post {
 			
 			if (postID != 0) {
 				PreparedStatement makePostPrep = conn.prepareStatement("insert into Social (PropID,CourtID,PlayerID,Title,Description,Post_Image"
-						+ ",Props,Rating values (?,?,?,?,?,?,?,?)");
+						+ ",Props,Rating) values (?,?,?,?,?,?,?,?)");
 				makePostPrep.setInt(1, postID);
 				makePostPrep.setInt(2, this.courtID);
 				makePostPrep.setInt(3, this.playerID);
@@ -144,6 +161,7 @@ public class Post {
 	
 	public HashMap<Integer,Post> getCourtPosts(int courtID) {
 		conn = DbUtil.getConnection();
+		CommentDao commentDao = new CommentDao();
 		try {
 			// Creates a hashmap where the key is the postID and the value is the Post object
 			HashMap<Integer,Post> posts = new HashMap<Integer,Post>();
@@ -153,7 +171,12 @@ public class Post {
 			ResultSet rs = st.executeQuery(getPostQuery);
 			
 			while(rs.next()) {
-				posts.put(rs.getInt(1), new Post(rs.getInt(1), courtID, rs.getInt(3), rs.getString(4),rs.getString(5),(image)rs.getObject(6),rs.getInt(7),rs.getDouble(8)));
+				int postID = rs.getInt(1);
+				ArrayList<Comment> comments = commentDao.getComments(postID);
+				Post newPost = new Post(postID, courtID, rs.getInt(3), rs.getString(4),rs.getString(5),
+						(image)rs.getObject(6),rs.getInt(7),rs.getDouble(8), comments);
+				
+				posts.put(rs.getInt(1), newPost);
 			}
 			
 			return posts;
