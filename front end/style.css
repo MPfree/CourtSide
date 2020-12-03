@@ -136,3 +136,19 @@ body {
 .title2{
 	background-color: #d19054;
 }
+
+.court{
+	height:180px;
+	width: 300px;
+	background-color: #b37120;
+	text-align: center;
+	margin-left: 800px;
+
+}
+
+
+.newcourtform{
+	text-align: center;
+	font-family: 'Raleway', sans-serif, thin;
+	color: #b37120;
+}
