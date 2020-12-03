@@ -26,10 +26,10 @@ public class CourtsDao {
 							+ ") values (?, ?, ?, ?, ?, ?)");
 			// Parameters start with 1
 			preparedStatement.setInt(1, Court.getCourtID());
-			preparedStatement.setString(2, Court.getCourt_Name());
+			preparedStatement.setString(2, Court.getCourtName());
 			preparedStatement.setString(3, Court.getAddress());
-			preparedStatement.setInt(4, Court.getNumber_Nets());
-			preparedStatement.setInt(5, Court.getDouble_Rim());
+			preparedStatement.setInt(4, Court.getNumberNets());
+			preparedStatement.setInt(5, Court.getDoubleRim());
 			preparedStatement.setFloat(6, Court.getRating());
 			
 			preparedStatement.executeUpdate();
@@ -113,10 +113,10 @@ public class CourtsDao {
 			while (rs.next()) {
 				Courts Court = new Courts();
 				Court.setCourtID(rs.getInt("CourtID"));
-				Court.setCourt_Name(rs.getString("Court_Name"));
+				Court.setCourtName(rs.getString("Court_Name"));
 				Court.setAddress(rs.getString("Address"));
-				Court.setNumber_Nets(rs.getInt("Number_Nets"));
-				Court.setDouble_Rim(rs.getInt("Double_RIm"));
+				Court.setNumberNets(rs.getInt("Number_Nets"));
+				Court.setDoubleRim(rs.getInt("Double_RIm"));
 				Court.setRating(rs.getFloat("Rating"));
 				Courts.add(Court);
 			}
@@ -138,10 +138,10 @@ public class CourtsDao {
 
 			if (rs.next()) {
 				Court.setCourtID(rs.getInt("userid"));
-				Court.setCourt_Name(rs.getString("Court Name"));
+				Court.setCourtName(rs.getString("Court Name"));
 				Court.setAddress(rs.getString("Address"));
-				Court.setNumber_Nets(rs.getInt("Number of Nets"));
-				Court.setDouble_Rim(rs.getInt("Double RIm"));
+				Court.setNumberNets(rs.getInt("Number of Nets"));
+				Court.setDoubleRim(rs.getInt("Double RIm"));
 				Court.setRating(rs.getFloat("Rating"));
 			}
 		} catch (SQLException e) {
@@ -171,12 +171,12 @@ public class CourtsDao {
 			while (rs.next()) {
 				Courts court = new Courts();
 				court.setCourtID(rs.getInt("CourtID"));
-				court.setCourt_Name(rs.getString("Court_Name"));
+				court.setCourtName(rs.getString("Court_Name"));
 				court.setAddress(rs.getString("Address"));
-				court.setNumber_Nets(rs.getInt("Number_Nets"));
-				court.setDouble_Rim(rs.getInt("Double_Rim"));
+				court.setNumberNets(rs.getInt("Number_Nets"));
+				court.setDoubleRim(rs.getInt("Double_Rim"));
 				court.setRating(rs.getFloat("Rating"));
-				court.setNumber_Ratings(rs.getInt("Number_Ratings"));
+				court.setNumberRatings(rs.getInt("Number_Ratings"));
 				courts.add(court);
 			}
 		} catch (SQLException e) {

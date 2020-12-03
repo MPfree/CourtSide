@@ -9,6 +9,7 @@
 	<title style='font-family: Arial; font-size: 30px;'>Courtside: Maps</title>
 	<link rel='icon' href='https://www.freepnglogos.com/uploads/basketball-png/basketball-open-letter-3.png'>	
 	<link href='./style.css' rel='stylesheet' type='text/css'>
+	
 </head>
 
 <body>
@@ -26,8 +27,20 @@
 
 	<p class='text'>find a court.</p>
 	<div class='wrapper'>
-	<a type="button" class="button" href='../front%20end/courtpage.html'>Enter</a>
+	<a type="button" class="button" href='../front%20end/newcourt.html'>Add A New Court</a>
 	</div>
+	<br><br>
+	<c:forEach items="${courts}" var="court">
+		<a id="${court.getCourtID()}" type="button" class="button" 
+		style="align-self: center" 
+		href='../front%20end/MapController?action=select?
+		courtID=${court.getCourtID()}?courtName=${court.getCourtName()}'>
+		${court.getCourtName()}
+		</a>						
+	</c:forEach>
+
+	
+		
 
 
 </body>
