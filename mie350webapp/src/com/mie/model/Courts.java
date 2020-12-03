@@ -2,60 +2,60 @@ package com.mie.model;
 
 public class Courts {
 
-	private int CourtID;
-	private String Court_Name;
-	private String Address;
+	private int courtID;
+	private String courtName;
+	private String address;
 //	private Date dob;
-	private int Number_Nets;
-	private int Double_Rim;
-	private float Rating;
-	private int Number_Ratings;
+	private int numberNets;
+	private int doubleRim;
+	private float rating;
+	private int numberRatings;
 
 	public int getCourtID() {
-		return CourtID;
+		return courtID;
 	}
 
-	public void setCourtID(int CourtID) {
-		this.CourtID = CourtID;
+	public void setCourtID(int courtID) {
+		this.courtID = courtID;
 	}
 
-	public String getCourt_Name() {
-		return Court_Name;
+	public String getCourtName() {
+		return courtName;
 	}
 
-	public void setCourt_Name(String Court_Name) {
-		this.Court_Name = Court_Name;
+	public void setCourtName(String courtName) {
+		this.courtName = courtName;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
-	public void setAddress(String Address) {
-		this.Address = Address;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public int getNumber_Nets() {
-		return Number_Nets;
+	public int getNumberNets() {
+		return numberNets;
 	}
 
-	public void setNumber_Nets(int Number_Nets) {
-		this.Number_Nets = Number_Nets;
+	public void setNumberNets(int numberNets) {
+		this.numberNets = numberNets;
 	}
 
-	public int getDouble_Rim() {
-		return Double_Rim;
+	public int getDoubleRim() {
+		return doubleRim;
 	}
 
-	public void setDouble_Rim(int Double_Rim) {
-		this.Double_Rim = Double_Rim;
+	public void setDoubleRim(int doubleRim) {
+		this.doubleRim = doubleRim;
 	}
 	public float getRating() {
-		return Rating;
+		return rating;
 	}
 
 	public void setRating(float Rating) {
-		this.Rating = Rating;
+		this.rating = Rating;
 	}
 	
 	public float updateRating(float UserRating, float Rating, int Number_Ratings){
@@ -63,19 +63,19 @@ public class Courts {
 	}
 	
 	
-	public float getNumber_Ratings(int Number_Ratings) {
-		return Number_Ratings;
+	public float getNumberRatings(int numberRatings) {
+		return numberRatings;
 	}
 
-	public void setNumber_Ratings(int Number_Ratings) {
-		this.Number_Ratings = Number_Ratings;
+	public void setNumberRatings(int numberRatings) {
+		this.numberRatings = numberRatings;
 	}
 	
 
 	@Override
 	public String toString() {
-		return "Court [ID=" + CourtID + ", Name=" + Court_Name
-				+ ", Address=" + Address + ", Number of Nets=" + Number_Nets+ ", Double Rim="
-				+ Double_Rim + ", Rating="+ Rating + ", Number of Ratings=" + Number_Ratings + "]";
+		return "Court [ID=" + courtID + ", Name=" + courtName
+				+ ", Address=" + address + ", Number of Nets=" + numberNets+ ", Double Rim="
+				+ doubleRim + ", Rating="+ rating + ", Number of Ratings=" + numberRatings + "]";
 	}
 }

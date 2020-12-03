@@ -72,7 +72,20 @@
     <h3>My Google Maps Demo</h3>
     <!--The div element for the map -->
     <div id="map"></div>
-    <h3 id="address"></h3>
+    <p class='title'>Add A New Court</p>
+	
+
+    <form class='newcourtform'>
+        <label for="courtName">Court Name:</label><br>
+        <input type="text" id="courtName" name="courtName"><br><br>
+        <label for="numNets">Number of Nets:</label><br>
+        <input type="text" id="numNets" name="numNets"><br><br>
+        <label for="location">Location:</label><br>
+        <input id="address" type="text" id="location" name="location"><br><br><br>
+        <input type="submit" value="Submit" class='button'><br>
+
+        
+      </form>
   </body>
 </html>
 <!-- aight imma go off -->
