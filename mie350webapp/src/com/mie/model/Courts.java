@@ -7,7 +7,7 @@ public class Courts {
 	private String address;
 //	private Date dob;
 	private int numberNets;
-	private int doubleRim;
+	private String doubleRim;
 	private float rating;
 	private int numberRatings;
 
@@ -43,11 +43,11 @@ public class Courts {
 		this.numberNets = numberNets;
 	}
 
-	public int getDoubleRim() {
+	public String getDoubleRim() {
 		return doubleRim;
 	}
 
-	public void setDoubleRim(int doubleRim) {
+	public void setDoubleRim(String doubleRim) {
 		this.doubleRim = doubleRim;
 	}
 	public float getRating() {

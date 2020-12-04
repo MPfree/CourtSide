@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
 				/**
 				 * Redirect to the members-only home page.
 				 */
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("MapController?action=get");
 
 				/**
 				 * Set a timeout variable of 900 seconds (15 minutes) for this
