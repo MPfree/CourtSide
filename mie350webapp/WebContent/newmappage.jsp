@@ -8,7 +8,7 @@
   <head>
     <title>Add Map</title>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIUlJfUiTuAmLyj4IEQtJVTr9uOSku8zQ&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEFWcFxPWdtJK8-SG1w_jW_7WY18Suid8&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
     <style type="text/css">
@@ -54,15 +54,15 @@
       }
     </script>
     <script>
-      async function getAddress(lat, long){
-        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAIUlJfUiTuAmLyj4IEQtJVTr9uOSku8zQ`)
+      async function getAddress(lat, lng){
+        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAEFWcFxPWdtJK8-SG1w_jW_7WY18Suid8`)
         const json_obj = await response.json()
         const address = json_obj.results[0].formatted_address
         return address
       }
-      function placeMarker(lat, long){
+      function placeMarker(lat, lng){
         const marker = new google.maps.Marker({
-          position: {lat:lat, lng:long},
+          position: {lat:lat, lng:lng},
           map: map,
         });
       }

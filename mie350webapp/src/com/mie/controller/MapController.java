@@ -40,17 +40,23 @@ public class MapController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String forward = "";
 		String action = request.getParameter("action");
-		if(action.equalsIgnoreCase("select")) {
-			HttpSession session = request.getSession(true);
-			int courtID = Integer.parseInt(request.getParameter("courtID"));
-			String courtName = request.getParameter("courtName");
-			session.setAttribute("courtID", courtID);
-			session.setAttribute("courtName", courtName);
-			forward = BOOKING;
-		}
-		else if(action.equalsIgnoreCase("get")) {
+		if(action==null) {
 			forward = INDEX;
 			request.setAttribute("courts", dao.getAllCourts());
+		}
+		else {
+			if(action.equalsIgnoreCase("select")) {
+				HttpSession session = request.getSession(true);
+				int courtID = Integer.parseInt(request.getParameter("courtID"));
+				String courtName = request.getParameter("courtName");
+				session.setAttribute("courtID", courtID);
+				session.setAttribute("courtName", courtName);
+				forward = BOOKING;
+			}
+			else if(action.equalsIgnoreCase("get")) {
+				forward = INDEX;
+				request.setAttribute("courts", dao.getAllCourts());
+			}
 		}
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);

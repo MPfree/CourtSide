@@ -8,32 +8,20 @@
 <head>
 	<title style='font-family: Arial; font-size: 30px;'>Courtside: Maps</title>
 	<link rel='icon' href='https://www.freepnglogos.com/uploads/basketball-png/basketball-open-letter-3.png'>	
-	<link href='./style.css' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 	
 </head>
 
 <body>
-	<div class="banner">
-	<a class="page" href="../front%20end/index.html">   Find A Court   </a>
-
-
-	<a class='page' href='../front%20end/feed.html'>   Social Media   </a>
-
-	<br>
-	<br>
-	</div>
-<br>
-<br>
-
 	<p class='text'>find a court.</p>
 	<div class='wrapper'>
-	<a type="button" class="button" href='../front%20end/newcourt.html'>Add A New Court</a>
+	<a type="button" class="button" href='newmappage.jsp'>Add A New Court</a>
 	</div>
 	<br><br>
 	<c:forEach items="${courts}" var="court">
 		<a id="${court.getCourtID()}" type="button" class="button" 
 		style="align-self: center" 
-		href='../front%20end/MapController?action=select?
+		href='/MapController?action=select?
 		courtID=${court.getCourtID()}?courtName=${court.getCourtName()}'>
 		${court.getCourtName()}
 		</a>						
