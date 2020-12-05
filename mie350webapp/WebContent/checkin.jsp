@@ -8,14 +8,14 @@
 <head>
 	<title style='font-family: Arial; font-size: 30px;'>Courtside: Check-In</title>
 	<link rel='icon' href='https://www.freepnglogos.com/uploads/basketball-png/basketball-open-letter-3.png'>	
-	<link href='./style.css' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
 
 <body>
 	<div class="banner">
-	<a class="page" href="../front%20end/index.html">   Find A Court   </a>
+	<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
 
-	<a class='page' href='../front%20end/feed.html'>   Social Media   </a>
+	<a class='page' href='feed.html'>   Social Media   </a>
 
 	<br>
 	<br>

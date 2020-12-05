@@ -7,6 +7,7 @@ import java.sql.Time;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,51 +61,51 @@ public class BookingDao {
 	}
 	
 	//helper functions that converts the date [VERY JANK I AM SORRY]
-	public Date yesterday(Date sqlDate) {
-		java.util.Date yesterdayDate = DateUtils.addDays(sqlDate, -1);
-		Date sqlYesterdayDate = new Date(yesterdayDate.getYear(), yesterdayDate.getMonth(), yesterdayDate.getDay());
-		return sqlYesterdayDate;	
+	public Date afterTomorrow(Date sqlDate) {
+		java.util.Date afterTomorrow = DateUtils.addDays(sqlDate, 2);
+		Date sqlAfterTomorrowDate = new Date(afterTomorrow.getTime());
+		return sqlAfterTomorrowDate;	
 	}
 	//[ALSO VERY JANKY]
 	public Date tomorrow(Date sqlDate) {
 		java.util.Date tomorrowDate = DateUtils.addDays(sqlDate, 1);
-		Date sqlTomorrowDate = new Date(tomorrowDate.getYear(), tomorrowDate.getMonth(), tomorrowDate.getDay());
+		Date sqlTomorrowDate = new Date(tomorrowDate.getTime());
 		return sqlTomorrowDate;		
 	}
 	
 	
 	//API that will display the status of all the bookings given the courtID and date
-	public HashMap<Date,List<Booking>> allBookings(int courtID, Date date) {
+	public HashMap<Date,ArrayList<Booking>> allBookings(int courtID, Date date) {
 		
 		//A hashmap where the key is the date, and the values are all the bookings for that date
-		HashMap<Date,List<Booking>> courtBookings = new HashMap<Date,List<Booking>>();
+		HashMap<Date,ArrayList<Booking>> courtBookings = new HashMap<Date,ArrayList<Booking>>();
 		
 		//we must iterate three times to get the bookings for yesterday, today, and tomorrow
 		for (int i=0; i<3; i++) {
 			
 			try{
 				
-				List<Booking> bookings = new ArrayList<Booking>();
-				Date iterationDate;
-				PreparedStatement statement = connection.prepareStatement("select * from Booking where CourtID=?, Sign_Up_Date=? ORDER BY Sign_Up_Time");    
-				statement.setInt(1, courtID);
+				ArrayList<Booking> bookings = new ArrayList<Booking>();
+				Date iterationDate;   
 				
 				//if statement for the dates
 				if (i==0) { //today
 					iterationDate = date;
-					statement.setDate(2, iterationDate);
+					System.out.println(iterationDate);
 				}
-				else if (i==1) { //yesterday
-					iterationDate = yesterday(date);
-					statement.setDate(2, yesterday(iterationDate));
-				}
-				else { //tomorrow (i==2)
+				else if (i==1) { //tomorrow
 					iterationDate = tomorrow(date);
-					statement.setDate(2, tomorrow(iterationDate));
+					System.out.println(iterationDate);
+				}
+				else { //after tomorrow (i==2)
+					iterationDate = afterTomorrow(date);
+					System.out.println(iterationDate);
 				}
 				
+				String query = "select * from Booking where CourtID=" + courtID + " AND Sign_Up_Date=#" + iterationDate + "# ORDER BY Sign_Up_Time";
+				Statement statement = connection.createStatement();
 				//execute query
-				ResultSet rs = statement.executeQuery();
+				ResultSet rs = statement.executeQuery(query);
 				
 				//add each booking to the list of bookings for given date
 				while (rs.next()) {
@@ -115,9 +116,6 @@ public class BookingDao {
 					booking.setsignupTime(rs.getTime("sign_up_time"));
 					booking.setteamSize(rs.getInt("team_size"));
 					booking.setDescription(rs.getString("description"));
-					bookings.add(booking);
-					
-					//FINALLY append to courtBookings
 					bookings.add(booking);
 				}
 				courtBookings.put(iterationDate, bookings);

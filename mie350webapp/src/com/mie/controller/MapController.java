@@ -1,7 +1,11 @@
 package com.mie.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
+import com.mie.dao.BookingDao;
 import com.mie.dao.CourtsDao;
 import com.mie.dao.StudentDao;
+import com.mie.model.Booking;
 import com.mie.model.Courts;
 import com.mie.model.Post;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
@@ -54,8 +62,14 @@ public class MapController extends HttpServlet {
 				String courtName = request.getParameter("courtName");
 				session.setAttribute("courtID", courtID);
 				session.setAttribute("courtName", courtName);
+				long millis=System.currentTimeMillis();  
+		        java.sql.Date today =new java.sql.Date(millis);
+		        System.out.println(today);
+				BookingDao bookingDao = new BookingDao();
+				HashMap<Date, ArrayList<Booking>> bookings = bookingDao.allBookings(courtID, today);
+				request.setAttribute("bookings", bookings);
 				forward = BOOKING;
-			}
+			} 
 			else if(action.equalsIgnoreCase("get")) {
 				forward = INDEX;
 				ArrayList<Courts> courts = dao.getAllCourts();

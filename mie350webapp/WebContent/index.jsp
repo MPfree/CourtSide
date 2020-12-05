@@ -21,8 +21,8 @@
 	<c:forEach items="${courts}" var="court">
 		<a id="${court.getCourtID()}" type="button" class="button" 
 		style="align-self: center" 
-		href='/MapController?action=select?
-		courtID=${court.getCourtID()}?courtName=${court.getCourtName()}'>
+		href='/mie350webapp/MapController?action=select&
+		courtID=${court.getCourtID()}&courtName=${court.getCourtName()}'>
 		${court.getCourtName()}
 		</a>						
 	</c:forEach>
