@@ -29,9 +29,6 @@
 
         Username: <input type="text" name="un" /><br> Password: <input
             						type="password" name="pw" />
-            						 <br> Name: <input type="text" name="name">
-            						 <br> Position: <input type="text" name="position">
-            						 <br> Height: <input type="text" name="height">
             						 <input type="submit" class="btn btn-info" value="Submit">
     </form>
 
