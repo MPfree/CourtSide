@@ -105,7 +105,7 @@ public class PlayersDao {
 		 * This method attempts to find the member that is trying to log in by
 		 * first retrieving the username and password entered by the user.
 		 */
-		Statement stmt = null;
+		PreparedStatement stmt = null;
 
 		String username = player.getUsername();
 		String password = player.getPassword();
@@ -114,14 +114,15 @@ public class PlayersDao {
 		 * Prepare a query that searches the members table in the database
 		 * with the given username and password.
 		 */
-		String searchQuery = "select * from members where username='"
-				+ username + "' AND password='" + password + "'";
+		String searchQuery = "select * from Players where Username=? AND Password=?";
 
 		try {
 			// connect to DB
 			Connection connection = DbUtil.getConnection();
-			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(searchQuery);
+			stmt = connection.prepareStatement(searchQuery);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			ResultSet rs = stmt.executeQuery();
 			boolean more = rs.next();
 
 			/**
