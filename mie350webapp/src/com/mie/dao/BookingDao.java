@@ -28,7 +28,7 @@ public class BookingDao {
 	public void addBooking(Booking booking) {
 		try {
 			PreparedStatement ps = connection.prepareStatement("insert into Booking("
-					+ "PlayerID, CourtID, Sign_Up_Time, Sign_Up_Date, Team_Size, Description)"
+					+ "PlayerID, CourtID, Sign_Up_Date, Sign_Up_Time, Team_Size, Description)"
 					+ " values (?,?,?,?,?,? )");
 			ps.setInt(1, booking.getPlayerID());
 			ps.setInt(2, booking.getcourtID());
