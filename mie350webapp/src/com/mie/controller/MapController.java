@@ -86,15 +86,14 @@ public class MapController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String courtName = request.getParameter("Court_Name");
+		String courtName = request.getParameter("courtName");
 		if(courtName != null) {
 			Courts court= new Courts();
-			court.setCourtID(Integer.parseInt(request.getParameter("CourtID")));
-			court.setCourtName(request.getParameter("Court_Name"));
-			court.setAddress(request.getParameter("Address"));
-			court.setNumberNets(Integer.parseInt(request.getParameter("Number_Nets")));
-			court.setDoubleRim(request.getParameter("Double_Rim"));
-			court.setRating(Float.parseFloat(request.getParameter("Rating")));
+			court.setCourtName(courtName);
+			court.setAddress(request.getParameter("location"));
+			court.setNumberNets(Integer.parseInt(request.getParameter("numNets")));
+			court.setDoubleRim(request.getParameter("doubleRim"));
+			court.setRating(Float.parseFloat(request.getParameter("rating")));
 			dao.addCourt(court);
 		}
 		else {
@@ -108,7 +107,7 @@ public class MapController extends HttpServlet {
 		 */
 		RequestDispatcher view = request
 				.getRequestDispatcher(INDEX);
-		request.setAttribute("Courts", dao.getAllCourts());
+		request.setAttribute("courts", dao.getAllCourts());
 		view.forward(request, response);
 	}
 

@@ -15,7 +15,7 @@
 	<div class="banner">
 	<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
 
-	<a class='page' href='feed.html'>   Social Media   </a>
+	<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
 
 	<br>
 	<br>

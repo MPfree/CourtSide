@@ -70,14 +70,6 @@ public class Post {
 		this.description = description;
 	}
 
-	public image getPostPic() {
-		return postPic;
-	}
-
-	public void setPostPic(image postPic) {
-		this.postPic = postPic;
-	}
-
 	public int getProps() {
 		return props;
 	}
@@ -102,18 +94,16 @@ public class Post {
 		this.comments = comments;
 	}
 
-	private image postPic;
 	private int props;
 	private double rating;
 	
 	public Post(int postID, int playerID, int courtID, String title, 
-			String description, image postPic, int props, double rating, ArrayList<Comment> comments) {
+			String description, int props, double rating, ArrayList<Comment> comments) {
 		this.postID = postID;
 		this.playerID = playerID;
 		this.courtID = courtID;
 		this.title = title;
 		this.description = description;
-		this.postPic = postPic;
 		this.props = props;
 		this.rating = rating;
 		this.comments = comments;
@@ -121,7 +111,7 @@ public class Post {
 	
 	public Post(int postID, int playerID, int courtID, String title, 
 			String description, image postPic, int props, double rating) {
-		this(postID, playerID, courtID, title, description, postPic, props, rating, null);
+		this(postID, playerID, courtID, title, description, props, rating, null);
 	}
 	
 	
@@ -136,16 +126,15 @@ public class Post {
 			int postID = generatePostID();
 			
 			if (postID != 0) {
-				PreparedStatement makePostPrep = conn.prepareStatement("insert into Social (PropID,CourtID,PlayerID,Title,Description,Post_Image"
-						+ ",Props,Rating) values (?,?,?,?,?,?,?,?)");
+				PreparedStatement makePostPrep = conn.prepareStatement("insert into Social (PostID,CourtID,PlayerID,Title,Description"
+						+ ",Props,Rating) values (?,?,?,?,?,?,?)");
 				makePostPrep.setInt(1, postID);
 				makePostPrep.setInt(2, this.courtID);
 				makePostPrep.setInt(3, this.playerID);
 				makePostPrep.setString(4, this.title);
 				makePostPrep.setString(5, this.description);
-//				makePostPrep.setImage(6, this.postPic);
-				makePostPrep.setInt(7, this.props);
-				makePostPrep.setDouble(8, this.rating);
+				makePostPrep.setInt(6, this.props);
+				makePostPrep.setDouble(7, this.rating);
 				
 				makePostPrep.execute();
 			}else {
@@ -174,7 +163,7 @@ public class Post {
 				int postID = rs.getInt(1);
 				ArrayList<Comment> comments = commentDao.getComments(postID);
 				Post newPost = new Post(postID, courtID, rs.getInt(3), rs.getString(4),rs.getString(5),
-						(image)rs.getObject(6),rs.getInt(7),rs.getDouble(8), comments);
+						rs.getInt(7),rs.getDouble(8), comments);
 				
 				posts.put(rs.getInt(1), newPost);
 			}
@@ -195,8 +184,9 @@ public class Post {
 			String generateIDQuery = "select count(PostID) from Social";
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(generateIDQuery);
-			
-			return rs.getInt(1)+1;
+			rs.next();
+			int numPosts = rs.getInt(1);
+			return numPosts+1;
 			
 		}catch(SQLException e) {
 			e.printStackTrace();

@@ -8,15 +8,14 @@
 <head>
 	<title style='font-family: Arial; font-size: 30px;'>Courtside: Social Media</title>
 	<link rel='icon' href='https://www.freepnglogos.com/uploads/basketball-png/basketball-open-letter-3.png'>	
-	<link href='./style.css' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
 
 <body>
 	<div class="banner">
-	<a class="page" href="../front%20end/index.html" >   Find A Court   </a>
+	<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
 
-
-	<a class='page' href='../front%20end/feed.html'>   Social Media   </a>
+	<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
 
 	<br>
 	<br>
@@ -24,14 +23,20 @@
 
 <br>
 <br>
-
-	<p class='title'>#court name</p>
+	
+	<p class='title'>${courtName}</p>
+	<div class="wrapper">
+    <a type="button" class="button" href='newpost.jsp'>New Post</a>
+    <br><br>
+    </div>
 	<div class='wrapper'>
-	<div class='post'>
-		<p class='title2'>#Post name</p>
-
-		hello
-	</div>
+		<c:forEach items="${posts}" var="post">
+			<div class='post'>
+			<p class='title2'>Title: ${post.value.getTitle() }</p>
+			Post: ${post.value.getDescription() }
+			</div>				
+		</c:forEach>
+	
 	</div>
 
 
