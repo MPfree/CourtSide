@@ -25,7 +25,7 @@ public class CourtsDao {
 					.prepareStatement("insert into Courts(CourtID,Court_Name,Address,Number_Nets,Double_Rim, Rating"
 							+ ") values (?, ?, ?, ?, ?, ?)");
 			// Parameters start with 1
-			preparedStatement.setInt(1, Court.getCourtID());
+			preparedStatement.setInt(1, generateCourtID());
 			preparedStatement.setString(2, Court.getCourtName());
 			preparedStatement.setString(3, Court.getAddress());
 			preparedStatement.setInt(4, Court.getNumberNets());
@@ -36,6 +36,22 @@ public class CourtsDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public int generateCourtID() {
+		try {
+			
+			String generateIDQuery = "select count(CourtID) from Courts";
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(generateIDQuery);
+			rs.next();
+			int numCourts = rs.getInt(1);
+			return numCourts+1;
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
 		}
 	}
 

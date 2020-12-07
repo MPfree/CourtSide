@@ -1,7 +1,11 @@
 package com.mie.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
+import com.mie.dao.BookingDao;
 import com.mie.dao.CourtsDao;
 import com.mie.dao.StudentDao;
+import com.mie.model.Booking;
 import com.mie.model.Courts;
 import com.mie.model.Post;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
@@ -54,8 +62,14 @@ public class MapController extends HttpServlet {
 				String courtName = request.getParameter("courtName");
 				session.setAttribute("courtID", courtID);
 				session.setAttribute("courtName", courtName);
+				long millis=System.currentTimeMillis();  
+		        java.sql.Date today =new java.sql.Date(millis);
+		        System.out.println(today);
+				BookingDao bookingDao = new BookingDao();
+				HashMap<Date, ArrayList<Booking>> bookings = bookingDao.allBookings(courtID, today);
+				request.setAttribute("bookings", bookings);
 				forward = BOOKING;
-			}
+			} 
 			else if(action.equalsIgnoreCase("get")) {
 				forward = INDEX;
 				ArrayList<Courts> courts = dao.getAllCourts();
@@ -72,15 +86,14 @@ public class MapController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String courtName = request.getParameter("Court_Name");
+		String courtName = request.getParameter("courtName");
 		if(courtName != null) {
 			Courts court= new Courts();
-			court.setCourtID(Integer.parseInt(request.getParameter("CourtID")));
-			court.setCourtName(request.getParameter("Court_Name"));
-			court.setAddress(request.getParameter("Address"));
-			court.setNumberNets(Integer.parseInt(request.getParameter("Number_Nets")));
-			court.setDoubleRim(request.getParameter("Double_Rim"));
-			court.setRating(Float.parseFloat(request.getParameter("Rating")));
+			court.setCourtName(courtName);
+			court.setAddress(request.getParameter("location"));
+			court.setNumberNets(Integer.parseInt(request.getParameter("numNets")));
+			court.setDoubleRim(request.getParameter("doubleRim"));
+			court.setRating(Float.parseFloat(request.getParameter("rating")));
 			dao.addCourt(court);
 		}
 		else {
@@ -94,7 +107,7 @@ public class MapController extends HttpServlet {
 		 */
 		RequestDispatcher view = request
 				.getRequestDispatcher(INDEX);
-		request.setAttribute("Courts", dao.getAllCourts());
+		request.setAttribute("courts", dao.getAllCourts());
 		view.forward(request, response);
 	}
 

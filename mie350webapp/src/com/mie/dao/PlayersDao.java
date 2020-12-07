@@ -141,8 +141,10 @@ public class PlayersDao {
 			 * the Member object.
 			 */
 			else if (more) {
-				String name = rs.getString("Name");
-				player.setName(name);
+				player.setPosition(rs.getString("Position"));
+				player.setHeight(rs.getString("Height"));
+				player.setName(rs.getString("Name"));
+				player.setPlayerID(rs.getInt("PlayerID"));
 				player.setValid(true);
 			}
 		}

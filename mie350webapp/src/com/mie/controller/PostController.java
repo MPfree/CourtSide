@@ -39,7 +39,7 @@ public class PostController extends HttpServlet {
 
 		if (action.equalsIgnoreCase("get")) {
 			forward = SOCIAL; // get will command to retrieve a desired post
-			int courtId = Integer.parseInt(request.getParameter("courtID"));
+			int courtId = (Integer) request.getSession().getAttribute("courtID");
 			HashMap<Integer,Post> posts = post.getCourtPosts(courtId);
 			request.setAttribute("posts", posts);
 		}
@@ -59,13 +59,14 @@ public class PostController extends HttpServlet {
 		
 // Problem below: all request.getParam values return strings
 		int postID = post.generatePostID();
-		int playerID = Integer.parseInt(request.getParameter("playerID"));
-		int courtID = Integer.parseInt(request.getParameter("courtID"));
+		Players player = (Players) request.getSession().getAttribute("currentSessionPlayer");
+		int playerID = player.getPlayerID();
+		int courtID = (Integer) request.getSession().getAttribute("courtID");
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
 		image postPic = null;
-		int props = Integer.parseInt(request.getParameter("props"));
-		int rating = Integer.parseInt(request.getParameter("rating"));
+		int props = 0;
+		int rating = 0;
 		
 		Post newPost = new Post(postID, playerID, courtID, title, description, postPic, props, rating);
 
@@ -74,8 +75,7 @@ public class PostController extends HttpServlet {
 		// create social.jsp
 		RequestDispatcher view = request
 				.getRequestDispatcher(SOCIAL);
-		int courtId = Integer.parseInt(request.getParameter("courtID"));
-		HashMap<Integer,Post> posts = post.getCourtPosts(courtId);
+		HashMap<Integer,Post> posts = post.getCourtPosts(courtID);
 		request.setAttribute("posts", posts);
 		view.forward(request, response);
 	}

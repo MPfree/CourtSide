@@ -85,13 +85,17 @@
     <p class='title'>Add A New Court</p>
 	
 
-    <form class='newcourtform'>
+    <form class='newcourtform' action="MapController" method="POST">
         <label for="courtName">Court Name:</label><br>
         <input type="text" id="courtName" name="courtName"><br><br>
         <label for="numNets">Number of Nets:</label><br>
         <input type="text" id="numNets" name="numNets"><br><br>
         <label for="location">Location:</label><br>
-        <input id="address" type="text" id="location" name="location"><br><br><br>
+        <input id="address" type="text" name="location"><br><br><br>
+        <label for="doubleRim">Double Rim:</label><br>
+        <input id="doubleRim" type="text" name="doubleRim"><br><br><br>
+        <label for="rating">Rating:</label><br>
+        <input id="rating" type="number" name="rating"><br><br><br>
         <input type="submit" value="Submit" class='button'><br>
 
         

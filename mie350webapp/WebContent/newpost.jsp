@@ -25,14 +25,10 @@
 
 
 	<p class='text'>check-in.</p>
-	<form class="checkinform" method="POST" action="BookingController">
-		<label for=sign_up_date >Date: </label><br>
- 		<input type="date"  id="sign_up_date" name="sign_up_date"><br>
-  		<label for="sign_up_time"> Time:</label><br>
-		<input type="time" id="sign_up_time" name="sign_up_time"><br><br>
-		<label for="size">Team Size:</label>
-		<input type="number" id="size" name="size"><br><br>
-		<label for="description">Description</label>
+	<form class="checkinform" method="POST" action="PostController">
+		<label for="title">Title</label>
+		<input type="text" id="title" name="title">
+		<label for="description">Post Content</label>
 		<input type="text" id="description" name="description">
 		<input type="submit" class="button"></input>
 	</form>
