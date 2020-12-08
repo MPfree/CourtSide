@@ -13,9 +13,15 @@
 
 <body>
 	<div class="banner">
-	<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
-
-	<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
+		<div id ="content">
+				<img src= "courtside_logo.png"
+					class = "logo"
+					width="300" height="60"
+					alt = "Courtside Logo"/>
+		</div>
+		<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
+	
+		<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
 
 	<br>
 	<br>
@@ -38,6 +44,10 @@
 		</c:forEach>
 	
 	</div>
+	<img src= "kawhi.png"
+			class = "center"
+			width="200" height="250"
+			alt = "Kawhi"/>
 
 
 
