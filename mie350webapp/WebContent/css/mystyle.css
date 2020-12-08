@@ -83,15 +83,13 @@ body {
 	display: inline-block;
 	font-size: 16px;
 	font-weight: bold;
-	
-	margin: 0px auto;
-	width: 60%;
+	width: 100%;
 }
 
 
 .daytitle{
 	text-align: center;
-	width: 240px;
+	width: 80%;
 	background-color: #b37120;
 	border: none;
 	padding: 15px 32px;
@@ -113,6 +111,7 @@ body {
 	font-size: 16px;
 	font-family: 'Raleway', sans-serif, thin;
 	color: white;
+	width: 80%;
 }
 
 #day1{
@@ -136,21 +135,21 @@ body {
 	margin: 0 auto;
 }
 
-#content{
-	position: relative;
-}
 
-#content img{
-	position: absolute;
-	top: 0px;
-	left:0px;
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .post{
 	height:180px;
-	width: 300px;
+	width: 30%;
 	background-color: #b37120;
 	text-align: center;
+	margin: auto;
 }
 
 .title2{

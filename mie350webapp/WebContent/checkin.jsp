@@ -13,7 +13,7 @@
 
 <body>
 	<div class="banner">
-		<div id ="content">
+		<div id ="center">
 				<img src= "courtside_logo.png"
 					class = "logo"
 					width="300" height="60"
@@ -22,7 +22,7 @@
 		<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
 	
 		<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
-
+		<a class='page' href="about.jsp">About</a>
 	<br>
 	<br>
 	</div>

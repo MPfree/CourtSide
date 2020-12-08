@@ -13,6 +13,17 @@
 </head>
 
 <body>
+<div class="banner">
+		<div id ="center">
+				<img src= "courtside_logo.png"
+					class = "logo"
+					width="300" height="60"
+					alt = "Courtside Logo"/>
+		</div>
+		<a class='page' href="about.jsp">About</a>
+	<br>
+	<br>
+	</div>
 	<p class='text'>find a court.</p>
 	<div class='wrapper'>
 	<a type="button" class="button" href='newmappage.jsp'>Add A New Court</a>
