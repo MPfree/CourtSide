@@ -16,7 +16,7 @@
 	<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
 
 	<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
-
+	<a class='page' href="about.jsp">About</a>
 	<br>
 	<br>
 	</div>

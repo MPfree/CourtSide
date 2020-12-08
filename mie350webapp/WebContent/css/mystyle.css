@@ -5,6 +5,7 @@
 	text-align: center;
 	padding-left: 40px;
 	padding-right: 40px;
+	padding-top: 100px;
 }
 
 .page:hover {
@@ -28,6 +29,7 @@ body {
 	background-color: #f5e4d0;
 	text-align: center;
 	font-weight: bold;
+	padding-bottom: 5px;
 }
 
  .text {
@@ -62,12 +64,14 @@ body {
 
 .wrapper{
 	text-align: center;
+	padding: 40px 40px;
 }
 
 .checkinform{
 	text-align: center;
 	font-family: 'Raleway', sans-serif, thin;
 	color: #b37120;
+	font-weight: bold;
 }
 
 .day{
@@ -79,11 +83,13 @@ body {
 	display: inline-block;
 	font-size: 16px;
 	font-weight: bold;
+	width: 100%;
 }
+
 
 .daytitle{
 	text-align: center;
-	width: 240px;
+	width: 80%;
 	background-color: #b37120;
 	border: none;
 	padding: 15px 32px;
@@ -96,7 +102,7 @@ body {
 }
 
 .booking{
-	text-align: center;
+	text-align: left;
 	background-color: #d19054;
 	border: none;
 	padding: 15px 32px;
@@ -105,38 +111,57 @@ body {
 	font-size: 16px;
 	font-family: 'Raleway', sans-serif, thin;
 	color: white;
+	width: 80%;
 }
 
 #day1{
 	overflow: scroll;
 	height: 600px;
 	width: 300px;
-	
+	margin: 0 auto;
 }
 
 #day2{
 	overflow: scroll;
 	height: 600px;
 	width: 300px;
+	margin: 0 auto;
 }
 
 #day3{
 	overflow: scroll;
 	height: 600px;
 	width: 300px;
+	margin: 0 auto;
+}
+
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .post{
 	height:180px;
-	width: 300px;
+	width: 30%;
 	background-color: #b37120;
 	text-align: center;
+	margin: auto;
 }
 
 .title2{
 	background-color: #d19054;
 }
 
+.center{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 18%;
+}
 .court{
 	height:180px;
 	width: 300px;

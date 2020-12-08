@@ -54,23 +54,30 @@
 							Langridge's Sort Table JavaScript</a></li>
 				</ul>
 				<hr>
-				<h2>This Sample Web App</h2>
-				<br> This is a toy example that does the following: <br>
+				<h2>Courtside:</h2>
+				<br> <p> Courtside aims to strengthen the basketball community in the GTA.</p> <br>
+				<br> This application does the following: <br>
 				<ul>
-					<li><b>Create</b> new students in the database.</li>
-					<li><b>Read</b> in students from the database.</li>
-					<li><b>Update</b> student information in the database.</li>
-					<li><b>Delete</b> student in the database.</li>
-					<li><b>Search</b> for students in the database.</li>
-					<li><b>Logs in</b> members to the system to add/update/delete
-						students in the database.</li>
+					<li>Allows users to view, like, and comment on a feed of posts from other users for each court on the website</li>
+					<li>Allows users to add new courts to the website</li>
+					<li>Allows users to check into a court</li>
+					<li>Allows user to see which players checked into a court</li>
+	
 				</ul>
 				<hr>
-				<h2>Organization of Files</h2>
-				<img src="img/mie350_webapp_schematic.jpg"> <br />
-				<h2>Using This For Your Projects</h2>
-				<br> You are free to use and modify this template file for your
-				projects.<br />
+
+				<h2> The Team </h2>
+				<br> <ul>
+					<li>Hussein Gohar</li>
+					<li>Selina Tong</li>
+					<li>Tom Kreynin</li>
+					<li>Venkat Vivekanandan</li>
+					<li>Jason Loi</li>
+					<li>Liam Marengere</li>
+					<li>William Jereza</li>
+				</ul>
+
+				
 				<br />
 			</div>
 			<div class="col-sm-2 sidenav">
