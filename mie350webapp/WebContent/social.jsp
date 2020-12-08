@@ -25,6 +25,7 @@
 <br>
 <br>
 
+	<div style='margin:auto'>
 	<p class='title'>#court name</p>
 	<div class='wrapper'>
 	<div class='post'>
@@ -33,6 +34,8 @@
 		hello
 	</div>
 	</div>
+</div>
+	</body>
 
 
 
