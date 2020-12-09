@@ -45,7 +45,7 @@
 		<c:forEach items="${posts}" var="post">
 			<div class='post'>
 			<p class='title2' style='color: white; font-size: 30px;'> 
-			<br>Title: ${post.value.getTitle() }<br><br>  </p>
+			<br>${username}: ${post.value.getTitle() }<br><br>  </p>
 			Post: ${post.value.getDescription() } <br>
 			<a class="props" type="button" href='/mie350webapp/PropsController?
 			postID=${post.value.getPostID() }'>
