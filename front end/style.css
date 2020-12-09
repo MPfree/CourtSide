@@ -127,8 +127,8 @@ body {
 }
 
 .post{
-	height:180px;
-	width: 300px;
+	width: 1200px;
+
 	background-color: #b37120;
 	text-align: center;
 }
@@ -151,4 +151,10 @@ body {
 	text-align: center;
 	font-family: 'Raleway', sans-serif, thin;
 	color: #b37120;
+}
+
+#comments{
+	overflow: scroll;
+	height: 600px;
+
 }
