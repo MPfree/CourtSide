@@ -128,13 +128,14 @@ body {
 
 .post{
 	width: 1200px;
+	min-height: 300px;
 
-	background-color: #b37120;
+	background-color: #f5e4d0;
 	text-align: center;
 }
 
 .title2{
-	background-color: #d19054;
+	background-color: #b37120;
 }
 
 .court{
@@ -153,8 +154,11 @@ body {
 	color: #b37120;
 }
 
-#comments{
+.comments{
 	overflow: scroll;
-	height: 600px;
+	max-height: 300px;
+	min-height: 120px;
+	background-color: #d19054;
+	mini
 
 }
