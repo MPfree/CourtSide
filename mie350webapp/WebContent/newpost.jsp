@@ -13,7 +13,6 @@
 
 <body>
 	<div class="banner">
-	<div class="banner">
 		<div id ="content">
 				<img src= "courtside_logo.png"
 					class = "logo"
@@ -31,7 +30,7 @@
 <br>
 
 
-	<p class='text'>check-in.</p>
+	<p class='text'>New Post</p>
 	<form class="checkinform" method="POST" action="PostController">
 		<label for="title">Title</label>
 		<input type="text" id="title" name="title">
