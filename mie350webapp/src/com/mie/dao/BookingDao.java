@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.mie.model.Booking;
@@ -75,10 +76,10 @@ public class BookingDao {
 	
 	
 	//API that will display the status of all the bookings given the courtID and date
-	public HashMap<Date,ArrayList<Booking>> allBookings(int courtID, Date date) {
+	public LinkedHashMap<Date,ArrayList<Booking>> allBookings(int courtID, Date date) {
 		
 		//A hashmap where the key is the date, and the values are all the bookings for that date
-		HashMap<Date,ArrayList<Booking>> courtBookings = new HashMap<Date,ArrayList<Booking>>();
+		LinkedHashMap<Date,ArrayList<Booking>> courtBookings = new LinkedHashMap<Date,ArrayList<Booking>>();
 		
 		//we must iterate three times to get the bookings for yesterday, today, and tomorrow
 		for (int i=0; i<3; i++) {

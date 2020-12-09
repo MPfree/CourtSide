@@ -59,9 +59,15 @@ public class MapController extends HttpServlet {
 			if(action.equalsIgnoreCase("select")) {
 				HttpSession session = request.getSession(true);
 				int courtID = Integer.parseInt(request.getParameter("courtID"));
+				int numberNets = Integer.parseInt(request.getParameter("numberNets"));
+				String doubleRim = request.getParameter("doubleRim");
+				float rating = Float.parseFloat(request.getParameter("rating"));
 				String courtName = request.getParameter("courtName");
 				session.setAttribute("courtID", courtID);
 				session.setAttribute("courtName", courtName);
+				session.setAttribute("numberNets", numberNets);
+				session.setAttribute("doubleRim", doubleRim);
+				session.setAttribute("rating", rating);
 				long millis=System.currentTimeMillis();  
 		        java.sql.Date today =new java.sql.Date(millis);
 		        System.out.println(today);

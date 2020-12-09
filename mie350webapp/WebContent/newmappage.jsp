@@ -79,6 +79,14 @@
     </script> 
   </head>
   <body>
+  <div class="banner">
+		<div id ="content">
+				<img src= "courtside_logo.png"
+					class = "logo"
+					width="300" height="60"
+					alt = "Courtside Logo"/>
+		</div>
+		<a class='page' href="about.jsp">About</a>
     <h3>My Google Maps Demo</h3>
     <!--The div element for the map -->
     <div id="map"></div>

@@ -24,8 +24,20 @@
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
 <body>
+	<div class="banner">
+		<div id ="content">
+				<img src= "courtside_logo.png"
+					class = "logo"
+					width="300" height="60"
+					alt = "Courtside Logo"/>
+		</div>
+		<a class='page' href="about.jsp">About</a>
+	<br>
+	<br>
+	</div>
+	<p class='text'>Log in</p>
 
-	<form action="LoginController">
+	<form action="LoginController" class="checkinform">
 
         Username: <input type="text" name="un" /><br> Password: <input
             						type="password" name="pw" />

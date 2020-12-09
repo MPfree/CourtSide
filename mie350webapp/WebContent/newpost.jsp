@@ -13,10 +13,17 @@
 
 <body>
 	<div class="banner">
-	<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
-
-	<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
-	<a class='page' href="about.jsp">About</a>
+	<div class="banner">
+		<div id ="content">
+				<img src= "courtside_logo.png"
+					class = "logo"
+					width="300" height="60"
+					alt = "Courtside Logo"/>
+		</div>
+		<a class="page" href="/mie350webapp/MapController?action=get">   Find A Court   </a>
+	
+		<a class='page' href='/mie350webapp/PostController?action=get'>   Social Media   </a>
+		<a class='page' href="about.jsp">About</a>
 	<br>
 	<br>
 	</div>
@@ -29,7 +36,7 @@
 		<label for="title">Title</label>
 		<input type="text" id="title" name="title">
 		<label for="description">Post Content</label>
-		<input type="text" id="description" name="description">
+		<textarea name="description" id="description" cols="40" rows="5"></textarea>
 		<input type="submit" class="button"></input>
 	</form>
 

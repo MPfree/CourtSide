@@ -14,7 +14,7 @@
 
 <body>
 <div class="banner">
-		<div id ="center">
+		<div id ="content">
 				<img src= "courtside_logo.png"
 					class = "logo"
 					width="300" height="60"
@@ -33,7 +33,10 @@
 		<a id="${court.getCourtID()}" type="button" class="button" 
 		style="align-self: center" 
 		href='/mie350webapp/MapController?action=select&
-		courtID=${court.getCourtID()}&courtName=${court.getCourtName()}'>
+		courtID=${court.getCourtID()}&courtName=${court.getCourtName()}
+		&address=${court.getAddress()}&numberNets=${court.getNumberNets()}
+		&doubleRim=${court.getDoubleRim()}
+		&rating=${court.getRating()}'>
 		${court.getCourtName()}
 		</a>						
 	</c:forEach>

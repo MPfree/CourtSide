@@ -42,6 +42,14 @@ body {
 	font-weight: bold;
 }
 
+.subtext {
+	font-family: 'Raleway', sans-serif, thin;
+	color: #b37120;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 20px;
+	text-align: center;
+}
 .title {
 	text-align: center;
 	font-size: 45px;
@@ -137,11 +145,14 @@ body {
 
 
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+#content{
+	position: relative;
+}
+
+#content img{
+	position: absolute;
+	top: 0px;
+	left:0px;
 }
 
 .post{

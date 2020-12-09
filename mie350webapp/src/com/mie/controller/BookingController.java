@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -88,7 +89,7 @@ public class BookingController extends HttpServlet {
 				teamSize, description);
 		bookingDao.addBooking(newBooking);
 		Date today = new Date(Calendar.getInstance().getTime().getTime());
-		HashMap<Date,ArrayList<Booking>> bookings = bookingDao.allBookings(courtID, today);
+		LinkedHashMap<Date,ArrayList<Booking>> bookings = bookingDao.allBookings(courtID, today);
 		RequestDispatcher view = request
 				.getRequestDispatcher(BOOKING);
 

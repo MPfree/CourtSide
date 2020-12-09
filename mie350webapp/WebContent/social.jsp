@@ -13,7 +13,7 @@
 
 <body>
 	<div class="banner">
-		<div id ="center">
+		<div id ="content">
 				<img src= "courtside_logo.png"
 					class = "logo"
 					width="300" height="60"
@@ -31,8 +31,14 @@
 <br>
 	
 	<p class='title'>${courtName}</p>
+	<p class='subtext'>${address } </p>
+	<p class='subtext'>Number of nets ${numberNets } </p>
+	<p class='subtext'>Double rim: ${doubleRim } </p>
+	<p class='subtext'>Rating: ${rating } </p>
 	<div class="wrapper">
     <a type="button" class="button" href='newpost.jsp'>New Post</a>
+    <a type="button" class="button" href='updateRating.jsp'>
+    Rate this court</a>
     <br><br>
     </div>
 	<div class='wrapper'>
@@ -40,7 +46,9 @@
 			<div class='post'>
 			<p class='title2'>Title: ${post.value.getTitle() }</p>
 			Post: ${post.value.getDescription() }
-			<button class="button">Like</button>
+			<a class="button" type="button" href='/mie350webapp/PropsController?
+			postID=${post.value.getPostID() }'>
+			Props</a>
 			<c:forEach items="${post.value.getComments()}" var="comment">
 				<p>${comment.getComment() } </p>
 			</c:forEach>
