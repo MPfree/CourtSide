@@ -5,40 +5,38 @@ import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
-import com.mie.dao.CommentDao;
-import com.mie.model.Comment;
+import com.mie.dao.CourtsDao;
 import com.mie.model.Post;
-import com.mie.model.image;
 
-public class CommentController extends HttpServlet{
+public class RatingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String SOCIAL = "/social.jsp";
-	CommentDao dao = new CommentDao();
+	CourtsDao dao = new CourtsDao();
 	
-	public CommentController() {
+	public RatingController() {
 		super();
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		int postID = Integer.parseInt(request.getParameter("postID"));
-		String commentContent = request.getParameter("comment");
-		Comment newComment = new Comment(postID, commentContent);
-		dao.addComment(newComment);
+		int courtID = (Integer) request.getSession().getAttribute("courtID");
+		int userRating = Integer.parseInt(request.getParameter("userRating"));
+		float newRating = dao.updateCourtRating(courtID, userRating);
+		HttpSession session = request.getSession(true);
+		session.setAttribute("rating", newRating);
 		
 		RequestDispatcher view = request
 				.getRequestDispatcher(SOCIAL);
-		int courtID = (Integer) request.getSession().getAttribute("courtID");
 		Post post = new Post();
 		HashMap<Integer,Post> posts = post.getCourtPosts(courtID);
 		request.setAttribute("posts", posts);
 		view.forward(request, response);
 	}
 }
-
-

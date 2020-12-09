@@ -59,7 +59,7 @@ public class Courts {
 	}
 	
 	public float updateRating(float UserRating, float Rating, int Number_Ratings){
-		return (((Rating*Number_Ratings)+UserRating)/Number_Ratings+1);
+		return (((Rating*Number_Ratings)+UserRating)/(Number_Ratings+1));
 	}
 	
 	

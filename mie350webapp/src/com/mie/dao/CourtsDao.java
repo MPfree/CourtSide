@@ -22,8 +22,8 @@ public class CourtsDao {
 	public void addCourt(Courts Court) {
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into Courts(CourtID,Court_Name,Address,Number_Nets,Double_Rim, Rating"
-							+ ") values (?, ?, ?, ?, ?, ?)");
+					.prepareStatement("insert into Courts(CourtID,Court_Name,Address,Number_Nets,Double_Rim, Rating, Number_Ratings"
+							+ ") values (?, ?, ?, ?, ?, ?, ?)");
 			// Parameters start with 1
 			preparedStatement.setInt(1, generateCourtID());
 			preparedStatement.setString(2, Court.getCourtName());
@@ -31,6 +31,7 @@ public class CourtsDao {
 			preparedStatement.setInt(4, Court.getNumberNets());
 			preparedStatement.setString(5, Court.getDoubleRim());
 			preparedStatement.setFloat(6, Court.getRating());
+			preparedStatement.setInt(7, 1);
 			
 			preparedStatement.executeUpdate();
 
@@ -88,7 +89,8 @@ public class CourtsDao {
 	}
 	
 	
-	public void updateCourtRating(int RCourtID, float UserRating) {
+	public float updateCourtRating(int RCourtID, float UserRating) {
+		float newRating = UserRating;
 		try {
 			
 		Statement statement = connection.createStatement();
@@ -97,28 +99,36 @@ public class CourtsDao {
 				.prepareStatement("select Rating from Courts where CourtID=?");
 		preparedStatement.setInt(1, RCourtID);
 		ResultSet rs = preparedStatement.executeQuery();
+		rs.next();
 		
 		float CurrentRating = rs.getFloat("Rating");
 		
 		PreparedStatement preparedStatement1 = connection
-				.prepareStatement("select Number_Ratings from users where CourtID=?");
-		preparedStatement.setInt(1, RCourtID);
-		ResultSet rs1 = preparedStatement.executeQuery();
+				.prepareStatement("select Number_Ratings from Courts where CourtID=?");
+		preparedStatement1.setInt(1, RCourtID);
+		ResultSet rs1 = preparedStatement1.executeQuery();
+		rs1.next();
 		
 		int Number_Ratings = rs1.getInt("Number_Ratings");
 		PreparedStatement preparedStatement2 = connection
 				.prepareStatement("update Courts set Rating=?"+ " where CourtID=?");
 		Courts courts = new Courts();
-
-		preparedStatement2.setFloat(1,courts.updateRating(UserRating, CurrentRating,Number_Ratings));
+		newRating = courts.updateRating(UserRating, CurrentRating,Number_Ratings);
+		preparedStatement2.setFloat(1,newRating);
 		preparedStatement2.setInt(2, RCourtID);
 		preparedStatement2.executeUpdate();
-
+		PreparedStatement preparedStatement3 = connection.prepareStatement
+				("update Courts set Number_Ratings=?"+ " where CourtID=?");
+		preparedStatement3.setInt(1,Number_Ratings+1);
+		preparedStatement3.setInt(2, RCourtID);
+		preparedStatement3.executeUpdate();
+		return newRating;
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return newRating;
 	}
 		
 	public ArrayList<Courts> getAllCourts() {

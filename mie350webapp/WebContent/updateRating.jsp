@@ -30,16 +30,10 @@
 <br>
 
 
-	<p class='text'>check-in.</p>
-	<form class="checkinform" method="POST" action="BookingController">
-		<label for=sign_up_date >Date: </label><br>
- 		<input type="date"  id="sign_up_date" name="sign_up_date"><br>
-  		<label for="sign_up_time"> Time:</label><br>
-		<input type="time" id="sign_up_time" name="sign_up_time"><br><br>
-		<label for="size">Team Size:</label>
-		<input type="number" id="size" name="size"><br><br>
-		<label for="description">Description</label>
-		<input type="text" id="description" name="description">
+	<p class='text'>Give the court a rating</p>
+	<form class="checkinform" method="POST" action="RatingController">
+		<label for="userRating">Rating</label>
+		<input type="number" id="userRating" name="userRating">
 		<input type="submit" class="button"></input>
 	</form>
 

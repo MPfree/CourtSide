@@ -13,7 +13,7 @@
 
 <body>
 	<div class="banner">
-		<div id ="center">
+		<div id ="content">
 				<img src= "courtside_logo.png"
 					class = "logo"
 					width="300" height="60"
@@ -31,19 +31,40 @@
 <br>
 	
 	<p class='title'>${courtName}</p>
+	<p class='subtext'>${address } </p>
+	<p class='subtext'>Number of nets ${numberNets } </p>
+	<p class='subtext'>Double rim: ${doubleRim } </p>
+	<p class='subtext'>Rating: ${rating } </p>
 	<div class="wrapper">
     <a type="button" class="button" href='newpost.jsp'>New Post</a>
+    <a type="button" class="button" href='updateRating.jsp'>
+    Rate this court</a>
     <br><br>
     </div>
 	<div class='wrapper'>
 		<c:forEach items="${posts}" var="post">
 			<div class='post'>
-			<p class='title2'>Title: ${post.value.getTitle() }</p>
-			Post: ${post.value.getDescription() }
-			<button class="button">Like</button>
-			<c:forEach items="${post.value.getComments()}" var="comment">
-				<p>${comment.getComment() } </p>
-			</c:forEach>
+			<p class='title2' style='color: white; font-size: 30px;'> 
+			<br>Title: ${post.value.getTitle() }<br><br>  </p>
+			Post: ${post.value.getDescription() } <br>
+			<a class="props" type="button" href='/mie350webapp/PropsController?
+			postID=${post.value.getPostID() }'>
+			<img src= "props.png"
+					class = "logo"
+					width="30" height="30"
+					alt = "Props"/>
+					</a>
+			<p class="props">${post.value.getProps() } </p>
+			<form action="CommentController?postID=${post.value.getPostID()}" 
+			method="POST">
+				<input type="text" id="comment" name="comment" placeholder="write a comment"><br>
+				<input type="submit" value = "Comment" class="button"></input>
+		    </form>
+		    <div class="comments">
+				<c:forEach items="${post.value.getComments()}" var="comment">
+					${comment.getComment() } <br>
+				</c:forEach>
+			</div>
 			</div>				
 		</c:forEach>
 	

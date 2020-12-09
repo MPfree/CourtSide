@@ -26,7 +26,16 @@
 </head>
 <body>
 
-	<%@ include file="navbar.jsp"%>
+	<div class="banner">
+		<div id ="content">
+				<img src= "courtside_logo.png"
+					class = "logo"
+					width="300" height="60"
+					alt = "Courtside Logo"/>
+		</div>
+	<br>
+	<br>
+	</div>
 
 	<div class="container-fluid text-center">
 		<div class="row content">
@@ -45,13 +54,6 @@
 					<li>Java Server Pages (JSP),</li>
 					<li>Apache Tomcat 7.0, and</li>
 					<li>A simple Microsoft Access database.</li>
-				</ul>
-				As well, the following <b>open-source</b> tools were used:
-				<ul>
-					<li><a href="http://getbootstrap.com/">The Bootstrap CSS
-							theme</a>, and</li>
-					<li><a href="https://kryogenix.org/code/browser/sorttable/">Stuart
-							Langridge's Sort Table JavaScript</a></li>
 				</ul>
 				<hr>
 				<h2>Courtside:</h2>
@@ -86,7 +88,6 @@
 		</div>
 	</div>
 
-	<%@ include file="footer.jsp"%>
 
 </body>
 </html>

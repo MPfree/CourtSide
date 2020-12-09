@@ -44,4 +44,34 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PropsController</display-name>
+    <servlet-name>PropsController</servlet-name>
+    <servlet-class>com.mie.controller.PropsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PropsController</servlet-name>
+    <url-pattern>/PropsController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RatingController</display-name>
+    <servlet-name>RatingController</servlet-name>
+    <servlet-class>com.mie.controller.RatingController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RatingController</servlet-name>
+    <url-pattern>/RatingController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CommentController</display-name>
+    <servlet-name>CommentController</servlet-name>
+    <servlet-class>com.mie.controller.CommentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommentController</servlet-name>
+    <url-pattern>/CommentController</url-pattern>
+  </servlet-mapping>
 </web-app>

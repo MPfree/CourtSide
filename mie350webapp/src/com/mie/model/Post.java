@@ -211,9 +211,13 @@ public class Post {
 	public void updateProps(int postID) {
 		conn = DbUtil.getConnection();
 		try {
-			
-			String updateProps = "update Social set Props = "+ (getProps(postID)+1) + "where PostID = " + postID;
-			Statement st = conn.createStatement();
+			String getProps = "SELECT Props FROM Social WHERE PostID=" + postID;
+			Statement st1 = conn.createStatement();
+			ResultSet rs = st1.executeQuery(getProps);
+			rs.next();
+			int currentProps = rs.getInt("Props");
+			String updateProps = "update Social set Props = "+ (currentProps + 1) + " where PostID = " + postID;
+ 			Statement st = conn.createStatement();
 			st.execute(updateProps);
 			
 		}catch(SQLException e) {

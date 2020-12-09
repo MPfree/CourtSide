@@ -18,8 +18,8 @@ public class CommentDao {
 			int postID = newComment.getPostID();
 			int commentID = generateCommentID(postID);
 			
-			PreparedStatement makeCommentPrep = conn.prepareStatement("insert into Comment (CommentID,PostID,Comment)"
-					+ "values (?,?,?)");
+			PreparedStatement makeCommentPrep = conn.prepareStatement("insert into Comments (CommentID,PostID,Comment)"
+					+ " values (?,?,?)");
 			makeCommentPrep.setInt(1, commentID);
 			makeCommentPrep.setInt(2, postID);
 			makeCommentPrep.setString(3, newComment.getComment());
@@ -52,10 +52,10 @@ public class CommentDao {
 		conn = DbUtil.getConnection();
 		try {
 			
-			String generateIDQuery = "select count(CommentID) from Comments "
-					+ "where PostID=" + postID;
+			String generateIDQuery = "select count(CommentID) from Comments";
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(generateIDQuery);
+			rs.next();
 			
 			return rs.getInt(1)+1;
 			

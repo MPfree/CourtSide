@@ -79,7 +79,18 @@
     </script> 
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+  <div class="banner">
+		<div id ="content">
+				<img src= "courtside_logo.png"
+					class = "logo"
+					width="300" height="60"
+					alt = "Courtside Logo"/>
+		</div>
+		<a class='page' href="about.jsp">About</a>
+	<br>
+	<br>
+	</div>
+    <h3 class="title">Drop a pin where your court is!</h3>
     <!--The div element for the map -->
     <div id="map"></div>
     <p class='title'>Add A New Court</p>

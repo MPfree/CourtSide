@@ -13,7 +13,7 @@
 
 <body>
 	<div class="banner">
-		<div id ="center">
+		<div id ="content">
 				<img src= "courtside_logo.png"
 					class = "logo"
 					width="300" height="60"
@@ -46,8 +46,8 @@
 		</div><br><br>
 		<c:forEach items="${booking_list.value}" var="booking">
 			<div class='booking'>
-				TeamSize: ${booking.getteamSize() }
-				Date: ${booking.getsignupDate()} 
+				TeamSize: ${booking.getteamSize() } <br>
+				Date: ${booking.getsignupDate()} <br>
 				Time: ${booking.getsignupTime() }
 	        </div><br><br>
 	    </c:forEach>
