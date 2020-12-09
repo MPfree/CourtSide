@@ -44,14 +44,27 @@
 	<div class='wrapper'>
 		<c:forEach items="${posts}" var="post">
 			<div class='post'>
-			<p class='title2'>Title: ${post.value.getTitle() }</p>
-			Post: ${post.value.getDescription() }
-			<a class="button" type="button" href='/mie350webapp/PropsController?
+			<p class='title2' style='color: white; font-size: 30px;'> 
+			<br>Title: ${post.value.getTitle() }<br><br>  </p>
+			Post: ${post.value.getDescription() } <br>
+			<a class="props" type="button" href='/mie350webapp/PropsController?
 			postID=${post.value.getPostID() }'>
-			Props</a>
-			<c:forEach items="${post.value.getComments()}" var="comment">
-				<p>${comment.getComment() } </p>
-			</c:forEach>
+			<img src= "props.png"
+					class = "logo"
+					width="30" height="30"
+					alt = "Props"/>
+					</a>
+			<p class="props">${post.value.getProps() } </p>
+			<form action="CommentController?postID=${post.value.getPostID()}" 
+			method="POST">
+				<input type="text" id="comment" name="comment" placeholder="write a comment"><br>
+				<input type="submit" value = "Comment" class="button"></input>
+		    </form>
+		    <div class="comments">
+				<c:forEach items="${post.value.getComments()}" var="comment">
+					${comment.getComment() } <br>
+				</c:forEach>
+			</div>
 			</div>				
 		</c:forEach>
 	

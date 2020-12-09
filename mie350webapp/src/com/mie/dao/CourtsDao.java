@@ -22,8 +22,8 @@ public class CourtsDao {
 	public void addCourt(Courts Court) {
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into Courts(CourtID,Court_Name,Address,Number_Nets,Double_Rim, Rating"
-							+ ") values (?, ?, ?, ?, ?, ?)");
+					.prepareStatement("insert into Courts(CourtID,Court_Name,Address,Number_Nets,Double_Rim, Rating, Number_Ratings"
+							+ ") values (?, ?, ?, ?, ?, ?, ?)");
 			// Parameters start with 1
 			preparedStatement.setInt(1, generateCourtID());
 			preparedStatement.setString(2, Court.getCourtName());
@@ -31,6 +31,7 @@ public class CourtsDao {
 			preparedStatement.setInt(4, Court.getNumberNets());
 			preparedStatement.setString(5, Court.getDoubleRim());
 			preparedStatement.setFloat(6, Court.getRating());
+			preparedStatement.setInt(7, 1);
 			
 			preparedStatement.executeUpdate();
 

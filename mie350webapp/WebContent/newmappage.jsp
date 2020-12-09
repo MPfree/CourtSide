@@ -87,7 +87,10 @@
 					alt = "Courtside Logo"/>
 		</div>
 		<a class='page' href="about.jsp">About</a>
-    <h3>My Google Maps Demo</h3>
+	<br>
+	<br>
+	</div>
+    <h3 class="title">Drop a pin where your court is!</h3>
     <!--The div element for the map -->
     <div id="map"></div>
     <p class='title'>Add A New Court</p>

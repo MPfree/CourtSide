@@ -33,9 +33,9 @@ public class CommentController extends HttpServlet{
 		
 		RequestDispatcher view = request
 				.getRequestDispatcher(SOCIAL);
-		int courtId = Integer.parseInt(request.getParameter("courtID"));
+		int courtID = (Integer) request.getSession().getAttribute("courtID");
 		Post post = new Post();
-		HashMap<Integer,Post> posts = post.getCourtPosts(courtId);
+		HashMap<Integer,Post> posts = post.getCourtPosts(courtID);
 		request.setAttribute("posts", posts);
 		view.forward(request, response);
 	}

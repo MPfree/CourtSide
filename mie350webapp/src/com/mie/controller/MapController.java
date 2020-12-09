@@ -93,20 +93,14 @@ public class MapController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String courtName = request.getParameter("courtName");
-		if(courtName != null) {
-			Courts court= new Courts();
-			court.setCourtName(courtName);
-			court.setAddress(request.getParameter("location"));
-			court.setNumberNets(Integer.parseInt(request.getParameter("numNets")));
-			court.setDoubleRim(request.getParameter("doubleRim"));
-			court.setRating(Float.parseFloat(request.getParameter("rating")));
-			dao.addCourt(court);
-		}
-		else {
-			int courtID = Integer.parseInt(request.getParameter("CourtID"));
-			float rating = Float.parseFloat(request.getParameter("rating"));
-			dao.updateCourtRating(courtID, rating);
-		}
+		Courts court= new Courts();
+		court.setCourtName(courtName);
+		court.setAddress(request.getParameter("location"));
+		court.setNumberNets(Integer.parseInt(request.getParameter("numNets")));
+		court.setDoubleRim(request.getParameter("doubleRim"));
+		court.setRating(Float.parseFloat(request.getParameter("rating")));
+		dao.addCourt(court);
+
 		/**
 		 * Once the court or rating has been added or updated, the page will redirect to
 		 * the listing of courts.
